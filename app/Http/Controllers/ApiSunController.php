@@ -55,4 +55,18 @@ class ApiSunController extends Controller
             'sensor4' => rand(0, 10) / 10
         ], 200);
     }
+    
+    function sunday(Request $request) {
+        date_default_timezone_set('Europe/Madrid');
+        $current = date('hi');
+        $sunrise = preg_replace('/[^0-9]/', '', (date_sunrise(time(), SUNFUNCS_RET_STRING, 37.18817, -3.60667, 90, 1))); //Ej.: 827
+        $sunset = preg_replace('/[^0-9]/', '', (date_sunset(time(), SUNFUNCS_RET_STRING, 37.18817, -3.60667, 90, 1))); //Ej.: 1821
+        
+        $numhours = intval(substr($sunset, 0, 2) - substr($sunrise, 0, 1));
+        $sundata = array();
+        
+        for($i = 0; $i < $numhours; $i++) {
+            
+        }
+    }
 }
